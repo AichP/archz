@@ -1,0 +1,113 @@
+#This file contains a guidline to install Arch Linux from scrap. With all the packages, and modifications.
+
+#---------------------------Install Arch--------------------#
+#load german keyboard layout
+loadkeys de
+#prepare disks
+fdsik /dev/sda
+#create a new partition with "n" fllow the procedure
+#create one main partition and a swap partition
+#after creating the two partitions press t 
+#select the swap partition number
+#type 82 for swap
+#type w for write 
+#make the file system
+mkfs.ext4 -L ROOT /dev/sda1
+#create the swap
+mkswap - L SWAP /dev/sda2
+#mount the main partition
+mount /dev/sda1 /mnt
+#mount the swap partition
+swapon /dev/sda2
+#opional check ram
+free -h
+#setup main system and bootloader grub
+pacstrap /mnt base base-devel grub
+#generate fstab file, thats the file that tells the bootloader what partitions are present... I guess
+genfstab -Up /mnt >> /mnt/etc/fstab
+#Check the file, you never know...
+cat /mnt/etc/fstab
+#change to the root of the /mnt
+arch-chroot /mnt
+#mow we are on the actual main system partition
+#define how you'd like your machine to be called
+echo computername > /etc/hostname
+#set the system language
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+echo LANGUAGE=en_US >> /etc/locale.conf
+#set the keymap layout
+echo KEYMAP=de-latin1 > /etc/vconsole.conf
+#create a symbolix link for the timezone into the localtime
+ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
+#add a user
+useradd -m -g users -G wheel,audio,video -s /bin/bash username
+#set a password for nicolai
+passwd username
+#in the file visudo uncomment the line %wheel ALL=(ALL) ALL
+#this gives all users in the wheel group acces to using the sudo command when they know the password
+EDITOR=nano visudo
+#uncomment the langague that you've picked before in the following file
+nano /etc/locale.gen
+#now that everyithing is set generate the locale file
+locale-gen
+#setup the bootloader
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-install /dev/sda
+#now exit out and reboot
+exit
+reboot
+#login with your username and password
+#get an ip from your fancy dhcp server
+sudo dhcpcd enp0s3
+#now get sum good packages like bash-autocompletion
+sudo pacman -S bash-completion
+#restart with ctrl+d to get use of the bash.completion
+#acpid and cronie are some mandtory shit dont ask stupid questions, just install it.
+#ntpd is some sort of timesynchronisation service and avahi has to do with sound if i
+#rembember correctly. When in doubt, duckduckgo is your friend.
+sudo pacman -S acpid ntp cronie avahi
+#enable the services to be run
+sudo systemctl enable acpid.service avahi-daemon cronie ntpd
+#sync the time
+sudo ntpd -gq
+date
+#Install GUI server stuff, might also work without the xorg-apps
+sudo pacman -S xorg-server xorg-xinit xorg-apps
+#if installed in a virtual box get this, use the dkms version
+sudo pacman -S virtualbox-guest-utils
+#install normal i3wm, optionally you can also install the i3wm-gaps-git version from AUR
+sudo pacman -S i3wm lightdm lightdm-gtk-greeter lightdm-greeter-settings
+#activate the lightdm service
+sudo systemctl enable lightdm.service
+#get sum network stuff
+sudo pacman -S networkmanager network-manager-applet nm-connection-editor
+#some stuff where I dont know what it does, I guess u can skip this one
+sudo pacman -S alsa-tools alsa-utils pulseaudio-alsa pavucontrol
+#yea also actiate that NetworkManager
+sudo systemctl enable NetworkManager
+#add xintric with exec i3
+nano ~/.xinitrc
+exec i3
+#Install a Terminal I like the xfce4 one
+sudo pacman -S termite
+#---------------------------Install Arch finished---------------#
+#---------------------------Mod it till it Breaks---------------#
+rebooooooooot
+#since we are using i3wm gotta set the keymap again - but why did we do it in the first place? - mimimi shut up.
+nano ~/.config/i3/conf
+exec "setxkbmap -layout de"
+# if for some awkward reason the font is fucked up, which is quite likely follow the steps on here:
+# https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/
+# now Install all the dotfiles from this awesome git Repo, and u'r good to go. HAH no ur not you need some additional packages like:
+scrot
+imagemagick
+#Packages from AUR:
+i3-gaps
+polybar-git
+keepass2-plugin-tray-icon
+spotify
+telegram-desktop-bin
+
+
+
+

@@ -1,0 +1,107 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: argb:dd000000, 000000, argb:ff000000
+rofi.color-normal: argb:00000000, #b8b8b8, argb:00000000, argb:643f3f3f, #f7881b
+rofi.color-active: argb:00000000, #ff8717, argb:00000000, argb:555f5f5f, #ff8717
+rofi.color-urgent: argb:00000000, #dc322f, argb:00000000, argb:6a5f5f5f, #dc322f
+rofi.show-icons: true
+rofi.location: 2
+rofi.yoffset: 10
+rofi.width: 820
+rofi.kb-row-select: Tab
+rofi.kb-row-tab: Control+space
+rofi.combi-modi: web:/home/aich/.config/rofi/web.sh,run,window
+rofi.show: combi
+rofi.modi: combi
+rofi.hide-scrollbar: true
+rofi.lines: 10
+rofi.bw: 0
+rofi.padding: 2 
+rofi.line-margin: 2
+rofi.separator-style: solid 
+rofi.columns: 2
+
+
+! URXVT FONTS
+!------------------------------------------------
+!URxvt.termName: rxvt-unicode
+URxvt.font:xft:Monospace:pixelsize=14, xft:FontAwesome:size=9
+URxvt.boldFont:xft:Monospace:bold:pixelsize=14
+URxvt.italicfont:xft:Monospace:italic:pixelsize=14
+URxvt.bolditalicFont:xft:Monospace:bold:italic:pixelsize=14
+URxvt*letterSpace: -2 
+URxvt*allow_bold: true
+! URXVT FONT SETTINGS
+
+!------------------------------------------------
+Xft.autohint: true
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+! URXVT COPY PASTE SHORTCUTS
+!------------------------------------------------
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.copyCommand: xsel -ib
+URxvt.pasteCommand: xsel -ob
+! URXVT SCROLLBAR AND CURSOR STYLE
+!------------------------------------------------
+URxvt*saveLines: 300000
+URxvt.scrollBar: false
+!URxvt*scrollstyle: plain
+URxvt*cursorBlink: true
+URxvt*cursorUnderline: true
+
+! URXVT FULLSCREEN TOGGLE
+!------------------------------------------------
+URxvt.keysym.F11: perl:fullscreen:switch
+! URXVT COLORS
+!------------------------------------------------
+! vim: set filetype=xdefaults :
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0000/9999
+
+! special
+*.foreground:   #cfcfc2
+*.background:   #000000
+*.cursorColor:  #cfcfc2
+
+! black
+*.color0:       #2a2e32
+*.color8:       #31363b
+
+! red
+*.color1:       #c0392b
+*.color9:       #f44f4f
+
+! green
+*.color2:       #218058
+*.color10:      #27ae60
+
+! yellow
+*.color3:       #fdbc4b
+*.color11:      #fdbc4b
+
+! blue
+*.color4:       #2980b9
+*.color12:      #0099ff
+
+! magenta
+*.color5:       #8e44ad
+*.color13:      #af81ff
+
+! cyan
+*.color6:       #f7881b
+*.color14:      #f9993b
+
+! white
+*.color7:       #acada1
+*.color15:      #cfd0c2
