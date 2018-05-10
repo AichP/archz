@@ -4,7 +4,7 @@ aurman/
 baloofilerc
 cef_user_data/
 configstore/
-#conky/
+conky/
 dconf/
 dolphin-emu/
 dolphinrc
@@ -54,7 +54,7 @@ Music/
 .nv/
 .archey3.cfg     
 nvidia-bug-report.log.gz
-.archinstall     
+#.archinstall     
 .nvidia-settings-rc
 .bash_history    
 PBA
@@ -69,10 +69,10 @@ Public/
 .cert/            
 R/
 RainerPlusListe
-#.conkyrc         
+.conkyrc         
 .RData
-#.conkyrccustom
-rrecently-used
+.conkyrccustom
+.recently-used
 cower/          
 .Rhistory
 D                 
@@ -82,7 +82,7 @@ D
 .designer/        
 #.screenlayout/
 Desktop/           
-#.screenrc
+.screenrc
 .dmrc             
 #.scripts/
 Documents/         
@@ -142,4 +142,4 @@ Mail/
 .xsession-errors.old
 #.mozilla/          
 .zshrc
-
+.dbus

@@ -12,7 +12,7 @@ rofi.yoffset: 10
 rofi.width: 820
 rofi.kb-row-select: Tab
 rofi.kb-row-tab: Control+space
-rofi.combi-modi: web:/home/aich/.config/rofi/web.sh,run,window
+rofi.combi-modi: web:/home/aich/.config/rofi/web.sh,run,config:/home/aich/.scripts/configeditor/configeditor.sh
 rofi.show: combi
 rofi.modi: combi
 rofi.hide-scrollbar: true

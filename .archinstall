@@ -1,3 +1,4 @@
+#!/bin/bash
 #This file contains a guidline to install Arch Linux from scrap. With all the packages, and modifications.
 
 #---------------------------Install Arch--------------------#
@@ -31,7 +32,7 @@ cat /mnt/etc/fstab
 arch-chroot /mnt
 #mow we are on the actual main system partition
 #define how you'd like your machine to be called
-echo computername > /etc/hostname
+echo $1 > /etc/hostname
 #set the system language
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 echo LANGUAGE=en_US >> /etc/locale.conf
@@ -40,9 +41,10 @@ echo KEYMAP=de-latin1 > /etc/vconsole.conf
 #create a symbolix link for the timezone into the localtime
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 #add a user
-useradd -m -g users -G wheel,audio,video -s /bin/bash username
+useradd -m -g users -G wheel,audio,video -s /bin/bash $2
 #set a password for nicolai
-passwd username
+echo "Password for $2"
+passwd $2
 #in the file visudo uncomment the line %wheel ALL=(ALL) ALL
 #this gives all users in the wheel group acces to using the sudo command when they know the password
 EDITOR=nano visudo

@@ -41,6 +41,6 @@ else
 
 fi"
 
-echo "$template" > /home/aich/.config/surfraw/elvi/$1
-chmod +x "/home/aich/.config/surfraw/elvi/$1" 
+echo "$template" > /home/$USER/.config/surfraw/elvi/$1
+chmod +x "/home/$USER/.config/surfraw/elvi/$1" 
 

@@ -23,14 +23,14 @@ font pango:monospace 12
 #color class		border  bg	text	indicator child_border
 client.focused          #ffffff #ffffff #000000 #ffffff   
 client.focused_inactive #aaaaaa #aaaaaa #000000 #aaaaaa   
-client.unfocused        #666666 #666666b #000000 #66666 
+client.unfocused        #222222 #222222 #000000 #222222 
 client.urgent           #ff0000 #ff0000 #000000 #ff0000  
 client.background       #000000 
 
 #set moitornames
 set $monitor2 "DP-5"
 set $monitor1 "DVI-D-0"
-set $rofi "rofi -kb-row-select 'Tab' -kb-row-tab 'Control+space' -combi-modi run,web:/home/aich/.config/rofi/web.sh,window -show combi -modi combi"
+#set $rofi "rofi -kb-row-select 'Tab' -kb-row-tab 'Control+space' -combi-modi run,web:/home/aich/.config/rofi/web.sh,window -show combi -modi combi"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -43,6 +43,7 @@ bindsym $mod+Shift+q kill
 
 
 bindsym $mod+d exec rofi -show
+bindsym $mod+x exec rofi -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -216,7 +217,7 @@ new_window 1pixel  	# no border for windows
 smart_borders on        # no borders when only one window is open
 gaps outer 12		# outer gaps
 gaps inner 12 		# inner gaps
-
+default_border pixel 1
 #polybar start
 exec_always bash $HOME/.config/polybar/launch.sh
 
